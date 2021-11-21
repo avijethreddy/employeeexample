@@ -1,0 +1,13 @@
+{"properties": [
+  
+  {
+    "name": "headlines",
+    "type": "java.lang.String",
+    "description": "A description for 'headlines'"
+  },
+  {
+    "name": "everything",
+    "type": "java.lang.String",
+    "description": "A description for 'everything'"
+  }
+]}
