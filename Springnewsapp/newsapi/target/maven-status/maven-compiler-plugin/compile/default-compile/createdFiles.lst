@@ -1,0 +1,7 @@
+com\newsapi\NewsapiApplication.class
+com\newsapi\model\Articles.class
+com\newsapi\model\Source.class
+com\newsapi\ServletInitializer.class
+com\newsapi\controller\NewsApiController.class
+com\newsapi\service\NewsApiService.class
+com\newsapi\model\NewsArticle.class
