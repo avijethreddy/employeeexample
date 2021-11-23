@@ -13,6 +13,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.user.dto.UserRegistrationDto;
+import com.user.execption.DuplicateUserExecption;
 import com.user.model.Role;
 import com.user.model.User;
 import com.user.repository.UserRepository;
@@ -35,12 +36,15 @@ public class UserServiceImpl implements UserService{
 		User user = new User(registrationDto.getFirstName(), 
 				registrationDto.getLastName(), registrationDto.getEmail(),
 				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
+		if(userRepository.existsByEmail(user.getEmail())){
+			throw  new DuplicateUserExecption("Duplicate Email - ["+user.getEmail()+"]"); 
+		}
 		
 		return userRepository.save(user);
 	}
 
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException  {
 	
 		User user = userRepository.findByEmail(username);
 		if(user == null) {
